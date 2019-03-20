@@ -2,10 +2,20 @@
 <html>
 <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+<script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
+<script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+
 <body style="margin: 0px; overflow: hidden;">
+
+  <div id="embedded-html">
+    <h1>Hello, World</h1>
+    <p>Is this shown in your mobile phone?</p>
+  </div>
+
   <a-scene embedded arjs>
-    <a-marker preset='hiro'>
-      <a-box position='0 0.5 0' material='color: black;'></a-box>
+    <a-marker preset='kanji' type='barcode' value="https://github.com/">
+      <a-plane width="1" height="1" rotation="-90 0 0" material="shader:html; target" #embedded-html"></a-plane>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
